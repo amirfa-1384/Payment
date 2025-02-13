@@ -1,5 +1,6 @@
 package ir.fa.Payment.entity;
 
+import ir.fa.Payment.entity.base.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.envers.Audited;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Audited
-public class Request extends BaseEntity{
+public class Request extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "ACCOUNT_ID",referencedColumnName = "ID")
     private Account account;

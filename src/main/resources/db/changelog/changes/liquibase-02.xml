@@ -7,68 +7,64 @@
 
     <changeSet id="Fazli-02-01" author="Fazli">
         <addForeignKeyConstraint baseTableName="PERSON" baseColumnNames="CONTACT_INFO_ID"
-                                  constraintName="FK_CONTACT_INFO" referencedTableName="CONTACT_INFO"
+                                  constraintName="FK_PERSON_CONTACT_INFO_ID_CONTACT_INFO" referencedTableName="CONTACT_INFO"
                                   referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="NEXT_STEP_ID"
-                                 constraintName="FK_NEXT_STEP" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_WORK_FLOW_NEXT_STEP_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="CURRENT_STEP_ID"
-                                 constraintName="FK_CURRENT_STEP" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_WORK_FLOW_CURRENT_STEP_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="PROVINCE_STEP_ID"
-                                 constraintName="FK_PROVINCE_STEP" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_PROVINCE_STEP_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="REQUEST_TYPE_ID"
-                                 constraintName="FK_REQUEST_TYPE" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_WORK_FLOW_REQUEST_TYPE_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="USERS" baseColumnNames="PERSON_ID"
-                                 constraintName="FK_PERSON" referencedTableName="PERSON"
+                                 constraintName="FK_USERS_PERSON_ID_PERSON" referencedTableName="PERSON"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="REQUEST_WORK_FLOW" baseColumnNames="REQUEST_TYPE_ID"
-                                 constraintName="FK_REQUEST_TYPE" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_REQUEST_WORK_FLOW_REQUEST_TYPE_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="REQUEST_WORK_FLOW" baseColumnNames="WORK_FLOW_ID"
-                                 constraintName="FK_WORK_FLOW" referencedTableName="WORK_FLOW"
+                                 constraintName="FK_REQUEST_WORK_FLOW_WORK_FLOW_ID_WORK_FLOW" referencedTableName="WORK_FLOW"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="REQUEST_LOG" baseColumnNames="REQUEST_ID"
-                                 constraintName="FK_REQUEST" referencedTableName="REQUEST"
+                                 constraintName="FK_REQUEST_LOG_REQUEST_ID_REQUEST" referencedTableName="REQUEST"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="REQUEST_LOG" baseColumnNames="ACCOUNT_ID"
-                                 constraintName="FK_ACCOUNT" referencedTableName="ACCOUNT"
+                                 constraintName="FK_REQUEST_LOG_ACCOUNT_ID_ACCOUNT" referencedTableName="ACCOUNT"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="ACCOUNT_ID"
-                                 constraintName="FK_ACCOUNT" referencedTableName="ACCOUNT"
+                                 constraintName="FK_REQUEST_ACCOUNT_ID_ACCOUNT" referencedTableName="ACCOUNT"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="REQUEST_TYPE_ID"
-                                 constraintName="FK_REQUEST_TYPE" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_REQUEST_REQUEST_TYPE_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="REQEUST_STATE_ID"
-                                 constraintName="FK_REQEUST_STATE" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="IS_DONE"
-                                 constraintName="FK_IS_DONE" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_REQUEST_REQEUST_STATE_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="IRANSTATE" baseColumnNames="PARENT_ID"
-                                 constraintName="FK_SELF_IRANSTATE" referencedTableName="IRANSTATE"
+                                 constraintName="FK_IRANSTATE_SELF_PARENT_ID_IRANSTATE" referencedTableName="IRANSTATE"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="IRANSTATE" baseColumnNames="TYPE"
-                                 constraintName="FK_TYPE" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_IRANSTATE_TYPE_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="CONTACT_INFO" baseColumnNames="CITY_ID"
-                                 constraintName="FK_CITY" referencedTableName="IRANSTATE"
+                                 constraintName="FK_CONTACT_INFO_CITY_ID_IRANSTATE" referencedTableName="IRANSTATE"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="CODE_TYPE_ITEM" baseColumnNames="CODE_TYPE_ID"
-                                 constraintName="FK_CODE_TYPE" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_CODE_TYPE_ITEM_CODE_TYPE_ID_CODE_TYPE" referencedTableName="CODE_TYPE"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="ACCOUNT" baseColumnNames="PERSON_ID"
-                                 constraintName="FK_PERSON" referencedTableName="PERSON"
+                                 constraintName="FK_ACCOUNT_PERSON_ID_PERSON" referencedTableName="PERSON"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="ACCOUNT" baseColumnNames="BANK_ID"
-                                 constraintName="FK_BANK_INFO" referencedTableName="BANK_INFO"
+                                 constraintName="FK_ACCOUNT_BANK_ID_BANK_INFO" referencedTableName="BANK_INFO"
                                  referencedColumnNames="ID"/>
         <addForeignKeyConstraint baseTableName="ACCOUNT" baseColumnNames="ACCOUNT_TYPE"
-                                 constraintName="FK_ACCOUNT_TYPE" referencedTableName="CODE_TYPE_ITEM"
+                                 constraintName="FK_ACCOUNT_ACCOUNT_TYPE_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
                                  referencedColumnNames="ID"/>
-
     </changeSet>
 </databaseChangeLog>

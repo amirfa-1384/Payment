@@ -2,6 +2,7 @@ package ir.fa.Payment.entity;
 
 
 
+import ir.fa.Payment.entity.base.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.envers.Audited;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Audited
-public class CodeTypeItem extends BaseEntity{
+public class CodeTypeItem extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "CODE_TYPE_ID",referencedColumnName = "ID")
     private CodeType codeType;

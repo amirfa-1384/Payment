@@ -1,4 +1,4 @@
-package ir.fa.Payment.entity;
+package ir.fa.Payment.entity.base;
 
 
 
