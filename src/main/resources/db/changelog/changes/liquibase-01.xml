@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="Fazli-01-01" author="Fazli">
+        <createTable tableName="person">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="FIRST_NAME" type="VARCHAR(100)"/>
+            <column name="LAST_NAME" type="VARCHAR(100)"/>
+            <column name="NATIONALCODE" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="FATHER_NAME" type="VARCHAR(100)"/>
+            <column name="EMAIL" type="VARCHAR(255)"/>
+            <column name="CONTACT_INFO_ID" type="INTEGER"/>
+            <column name="BIRTH_DATE" type="DATE"/>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-01-02" author="Fazli">
+        <createTable tableName="WORK_FLOW">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+            <column name="NEXT_STEP_ID" type="INTEGER"/>
+            <column name="CURRENT_STEP_ID" type="INTEGER"/>
+            <column name="PROVINCE_STEP_ID" type="INTEGER"/>
+            <column name="REQUEST_TYPE_ID" type="INTEGER"/>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-01-03" author="Fazli">
+        <createTable tableName="USERS">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="USER_NAME" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IS_ACTIVE" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PERSON_ID" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+    </changeSet>
+    <changeSet id="Fazli-01-04" author="Fazli">
+        <createTable tableName="REQUEST_WORK_FLOW">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="REQUEST_TYPE_ID" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="WORK_FLOW_ID" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+    </changeSet>
+
+    <changeSet id="Fazli-01-05" author="Fazli">
+        <createTable tableName="REQUEST_LOG">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="REQUEST_ID" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACCOUNT_ID" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-01-06" author="Fazli">
+        <createTable tableName="REQUEST">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="ACCOUNT_ID" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="REQUEST_TYPE_ID" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="REQEUST_STATE_ID" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IS_DONE" type="TINYINT(1)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-01-07" author="Fazli">
+        <createTable tableName="IRANSTATE">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="NAME" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CODE" type="VARCHAR(100)"/>
+            <column name="PARENT_ID" type="INTEGER"/>
+
+            <column name="TYPE" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-01-08" author="Fazli">
+        <createTable tableName="CONTACT_INFO">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="PHONE_NUMBER" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="TEL_NUMBER" type="VARCHAR(100)"/>
+
+            <column name="POSTALCODE" type="VARCHAR(100)"/>
+            <column name="IS_ACTIVE" type="TINYINT(1)"/>
+            <column name="CITY_ID" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-01-09" author="Fazli">
+        <createTable tableName="CODE_TYPE_ITEM">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="ENGLISH_TITLE" type="VARCHAR(100)"/>
+            <column name="FARSI_TITLE" type="VARCHAR(100)"/>
+            <column name="IS_ACTIVE" type="TINYINT(1)"/>
+            <column name="CODE_TYPE_ID" type="INTEGER"/>
+        </createTable>
+
+
+    </changeSet>
+
+    <changeSet id="Fazli-01-10" author="Fazli">
+        <createTable tableName="CODE_TYPE">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="ENGLISH_TITLE" type="VARCHAR(100)"/>
+            <column name="FARSI_TITLE" type="VARCHAR(100)"/>
+            <column name="IS_ACTIVE" type="TINYINT(1)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-01-11" author="Fazli">
+        <createTable tableName="BANK_INFO">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="BANK_NAME" type="VARCHAR(100)"/>
+            <column name="CODE" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-01-12" author="Fazli">
+        <createTable tableName="ACCOUNT">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="Date"/>
+            <column name="MODIFYDATE" type="Date"/>
+            <column name="DELETEDATE" type="Date"/>
+            <column name="CREATE_USER" type="VARCHAR(100)"/>
+            <column name="MODIFY_USER" type="VARCHAR(100)"/>
+            <column name="DELETE_USER" type="VARCHAR(100)"/>
+            <column name="VERSION" type="INTEGER"/>
+            <column name="DATASTATE" type="INTEGER(3)"/>
+
+            <column name="PERSON_ID" type="INTEGER"/>
+            <column name="BANK_ID" type="INTEGER"/>
+            <column name="ACCOUNT_TYPE" type="INTEGER"/>
+            <column name="ACCOUNT_BALANCE" type="Double(10,2)"/>
+
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
