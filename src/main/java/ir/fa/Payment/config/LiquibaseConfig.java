@@ -7,6 +7,7 @@ import liquibase.integration.spring.SpringLiquibase;
 import javax.sql.DataSource;
 
 @Configuration
+//@ConditionalOnProperty(name = "liquibase.enabled", havingValue = "false", matchIfMissing = false)
 public class LiquibaseConfig {
 
     private final Dashboard dashboard;

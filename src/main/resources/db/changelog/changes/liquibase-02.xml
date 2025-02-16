@@ -5,66 +5,298 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="Fazli-02-01" author="Fazli">
-        <addForeignKeyConstraint baseTableName="PERSON" baseColumnNames="CONTACT_INFO_ID"
-                                  constraintName="FK_PERSON_CONTACT_INFO_ID_CONTACT_INFO" referencedTableName="CONTACT_INFO"
-                                  referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="NEXT_STEP_ID"
-                                 constraintName="FK_WORK_FLOW_NEXT_STEP_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="CURRENT_STEP_ID"
-                                 constraintName="FK_WORK_FLOW_CURRENT_STEP_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="PROVINCE_STEP_ID"
-                                 constraintName="FK_PROVINCE_STEP_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="REQUEST_TYPE_ID"
-                                 constraintName="FK_WORK_FLOW_REQUEST_TYPE_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="USERS" baseColumnNames="PERSON_ID"
-                                 constraintName="FK_USERS_PERSON_ID_PERSON" referencedTableName="PERSON"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="REQUEST_WORK_FLOW" baseColumnNames="REQUEST_TYPE_ID"
-                                 constraintName="FK_REQUEST_WORK_FLOW_REQUEST_TYPE_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="REQUEST_WORK_FLOW" baseColumnNames="WORK_FLOW_ID"
-                                 constraintName="FK_REQUEST_WORK_FLOW_WORK_FLOW_ID_WORK_FLOW" referencedTableName="WORK_FLOW"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="REQUEST_LOG" baseColumnNames="REQUEST_ID"
-                                 constraintName="FK_REQUEST_LOG_REQUEST_ID_REQUEST" referencedTableName="REQUEST"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="REQUEST_LOG" baseColumnNames="ACCOUNT_ID"
-                                 constraintName="FK_REQUEST_LOG_ACCOUNT_ID_ACCOUNT" referencedTableName="ACCOUNT"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="ACCOUNT_ID"
-                                 constraintName="FK_REQUEST_ACCOUNT_ID_ACCOUNT" referencedTableName="ACCOUNT"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="REQUEST_TYPE_ID"
-                                 constraintName="FK_REQUEST_REQUEST_TYPE_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="REQEUST_STATE_ID"
-                                 constraintName="FK_REQUEST_REQEUST_STATE_ID_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="IRANSTATE" baseColumnNames="PARENT_ID"
-                                 constraintName="FK_IRANSTATE_SELF_PARENT_ID_IRANSTATE" referencedTableName="IRANSTATE"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="IRANSTATE" baseColumnNames="TYPE"
-                                 constraintName="FK_IRANSTATE_TYPE_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="CONTACT_INFO" baseColumnNames="CITY_ID"
-                                 constraintName="FK_CONTACT_INFO_CITY_ID_IRANSTATE" referencedTableName="IRANSTATE"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="CODE_TYPE_ITEM" baseColumnNames="CODE_TYPE_ID"
-                                 constraintName="FK_CODE_TYPE_ITEM_CODE_TYPE_ID_CODE_TYPE" referencedTableName="CODE_TYPE"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="ACCOUNT" baseColumnNames="PERSON_ID"
-                                 constraintName="FK_ACCOUNT_PERSON_ID_PERSON" referencedTableName="PERSON"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="ACCOUNT" baseColumnNames="BANK_ID"
-                                 constraintName="FK_ACCOUNT_BANK_ID_BANK_INFO" referencedTableName="BANK_INFO"
-                                 referencedColumnNames="ID"/>
-        <addForeignKeyConstraint baseTableName="ACCOUNT" baseColumnNames="ACCOUNT_TYPE"
-                                 constraintName="FK_ACCOUNT_ACCOUNT_TYPE_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
-                                 referencedColumnNames="ID"/>
+    <changeSet id="Fazli-04-01" author="Fazli">
+        <createTable tableName="person_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="FIRST_NAME" type="VARCHAR(255)"/>
+            <column name="LAST_NAME" type="VARCHAR(255)"/>
+            <column name="NATIONALCODE" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="FATHER_NAME" type="VARCHAR(255)"/>
+            <column name="EMAIL" type="VARCHAR(255)"/>
+            <column name="CONTACT_INFO_id" type="bigint"/>
+            <column name="BIRTH_DATE" type="datetime"/>
+
+        </createTable>
     </changeSet>
+
+    <changeSet id="Fazli-04-02" author="Fazli">
+        <createTable tableName="WORK_FLOW_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+            <column name="NEXT_STEP_id" type="bigint"/>
+            <column name="CURRENT_STEP_id" type="bigint"/>
+            <column name="PROVINCE_STEP_id" type="bigint"/>
+            <column name="REQUEST_TYPE_id" type="bigint"/>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-04-03" author="Fazli">
+        <createTable tableName="USERS_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="USER_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IS_ACTIVE" type="TINYINT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PERSON_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+    </changeSet>
+    <changeSet id="Fazli-04-04" author="Fazli">
+        <createTable tableName="REQUEST_WORK_FLOW_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="REQUEST_TYPE_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="WORK_FLOW_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+    </changeSet>
+
+    <changeSet id="Fazli-04-05" author="Fazli">
+        <createTable tableName="REQUEST_LOG_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="REQUEST_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACCOUNT_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-04-06" author="Fazli">
+        <createTable tableName="REQUEST_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="ACCOUNT_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="REQUEST_TYPE_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="REQEUST_STATE_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IS_DONE" type="TINYINT(1)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-04-07" author="Fazli">
+        <createTable tableName="IRANSTATE_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CODE" type="VARCHAR(255)"/>
+            <column name="PARENT_id" type="bigint"/>
+
+            <column name="TYPE" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-04-08" author="Fazli">
+        <createTable tableName="CONTACT_INFO_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="PHONE_NUMBER" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="TEL_NUMBER" type="VARCHAR(255)"/>
+
+            <column name="POSTALCODE" type="VARCHAR(255)"/>
+            <column name="IS_ACTIVE" type="TINYINT(1)"/>
+            <column name="CITY_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-04-09" author="Fazli">
+        <createTable tableName="CODE_TYPE_ITEM_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="ENGLISH_TITLE" type="VARCHAR(255)"/>
+            <column name="FARSI_TITLE" type="VARCHAR(255)"/>
+            <column name="IS_ACTIVE" type="TINYINT(1)"/>
+            <column name="CODE_TYPE_id" type="bigint"/>
+        </createTable>
+
+
+    </changeSet>
+
+    <changeSet id="Fazli-04-10" author="Fazli">
+        <createTable tableName="CODE_TYPE_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="ENGLISH_TITLE" type="VARCHAR(255)"/>
+            <column name="FARSI_TITLE" type="VARCHAR(255)"/>
+            <column name="IS_ACTIVE" type="TINYINT(1)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-04-11" author="Fazli">
+        <createTable tableName="BANK_INFO_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="BANK_NAME" type="VARCHAR(255)"/>
+            <column name="CODE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Fazli-04-12" author="Fazli">
+        <createTable tableName="ACCOUNT_AUD">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CREATEDATE" type="datetime(6)"/>
+            <column name="MODIFYDATE" type="datetime(6)"/>
+            <column name="DELETEDATE" type="datetime(6)"/>
+            <column name="CREATE_USER" type="VARCHAR(255)"/>
+            <column name="MODIFY_USER" type="VARCHAR(255)"/>
+            <column name="DELETE_USER" type="VARCHAR(255)"/>
+            <column name="VERSION" type="int"/>
+            <column name="DATASTATE" type="int"/>
+
+            <column name="PERSON_id" type="bigint"/>
+            <column name="BANK_id" type="bigint"/>
+            <column name="ACCOUNT_TYPE" type="bigint"/>
+            <column name="ACCOUNT_BALANCE" type="double"/>
+
+        </createTable>
+    </changeSet>
+
+
 </databaseChangeLog>

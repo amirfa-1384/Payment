@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="Fazli-02-00" author="Fazli">
+        <createTable tableName="revinfo">
+            <column name="rev" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="revtstmp" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="Fazli-02-01" author="Fazli">
+        <addColumn tableName="person_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="person_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="Fazli-02-02" author="Fazli">
+        <addColumn tableName="users_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="users_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="Fazli-02-03" author="Fazli">
+        <addColumn tableName="request_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="request_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="Fazli-02-04" author="Fazli">
+        <addColumn tableName="request_log_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="request_log_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="Fazli-02-05" author="Fazli">
+        <addColumn tableName="contact_info_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="contact_info_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="Fazli-02-06" author="Fazli">
+        <addColumn tableName="account_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="account_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="Fazli-02-07" author="Fazli">
+        <addColumn tableName="WORK_FLOW_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="WORK_FLOW_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="Fazli-02-08" author="Fazli">
+        <addColumn tableName="REQUEST_WORK_FLOW_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="REQUEST_WORK_FLOW_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="Fazli-02-09" author="Fazli">
+        <addColumn tableName="IRANSTATE_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="IRANSTATE_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="Fazli-02-10" author="Fazli">
+        <addColumn tableName="CODE_TYPE_ITEM_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="CODE_TYPE_ITEM_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="Fazli-02-11" author="Fazli">
+        <addColumn tableName="CODE_TYPE_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="CODE_TYPE_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="Fazli-02-12" author="Fazli">
+        <addColumn tableName="BANK_INFO_AUD">
+            <column name="revtype" type="int"/>
+        </addColumn>
+        <addColumn tableName="BANK_INFO_AUD">
+            <column name="rev" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

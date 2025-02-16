@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="Fazli-03-01" author="Fazli">
+        <addForeignKeyConstraint baseTableName="PERSON" baseColumnNames="CONTACT_INFO_id"
+                                  constraintName="FK_PERSON_CONTACT_INFO_id_CONTACT_INFO" referencedTableName="CONTACT_INFO"
+                                  referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="NEXT_STEP_id"
+                                 constraintName="FK_WORK_FLOW_NEXT_STEP_id_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="CURRENT_STEP_id"
+                                 constraintName="FK_WORK_FLOW_CURRENT_STEP_id_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="PROVINCE_STEP_id"
+                                 constraintName="FK_PROVINCE_STEP_id_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="WORK_FLOW" baseColumnNames="REQUEST_TYPE_id"
+                                 constraintName="FK_WORK_FLOW_REQUEST_TYPE_id_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="USERS" baseColumnNames="PERSON_id"
+                                 constraintName="FK_USERS_PERSON_id_PERSON" referencedTableName="PERSON"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="REQUEST_WORK_FLOW" baseColumnNames="REQUEST_TYPE_id"
+                                 constraintName="FK_REQUEST_WORK_FLOW_REQUEST_TYPE_id_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="REQUEST_WORK_FLOW" baseColumnNames="WORK_FLOW_id"
+                                 constraintName="FK_REQUEST_WORK_FLOW_WORK_FLOW_id_WORK_FLOW" referencedTableName="WORK_FLOW"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="REQUEST_LOG" baseColumnNames="REQUEST_id"
+                                 constraintName="FK_REQUEST_LOG_REQUEST_id_REQUEST" referencedTableName="REQUEST"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="REQUEST_LOG" baseColumnNames="ACCOUNT_id"
+                                 constraintName="FK_REQUEST_LOG_ACCOUNT_id_ACCOUNT" referencedTableName="ACCOUNT"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="ACCOUNT_id"
+                                 constraintName="FK_REQUEST_ACCOUNT_id_ACCOUNT" referencedTableName="ACCOUNT"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="REQUEST_TYPE_id"
+                                 constraintName="FK_REQUEST_REQUEST_TYPE_id_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="REQUEST" baseColumnNames="REQEUST_STATE_id"
+                                 constraintName="FK_REQUEST_REQEUST_STATE_id_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="IRANSTATE" baseColumnNames="PARENT_id"
+                                 constraintName="FK_IRANSTATE_SELF_PARENT_id_IRANSTATE" referencedTableName="IRANSTATE"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="IRANSTATE" baseColumnNames="TYPE"
+                                 constraintName="FK_IRANSTATE_TYPE_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="CONTACT_INFO" baseColumnNames="CITY_id"
+                                 constraintName="FK_CONTACT_INFO_CITY_id_IRANSTATE" referencedTableName="IRANSTATE"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="CODE_TYPE_ITEM" baseColumnNames="CODE_TYPE_id"
+                                 constraintName="FK_CODE_TYPE_ITEM_CODE_TYPE_id_CODE_TYPE" referencedTableName="CODE_TYPE"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="ACCOUNT" baseColumnNames="PERSON_id"
+                                 constraintName="FK_ACCOUNT_PERSON_id_PERSON" referencedTableName="PERSON"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="ACCOUNT" baseColumnNames="BANK_id"
+                                 constraintName="FK_ACCOUNT_BANK_id_BANK_INFO" referencedTableName="BANK_INFO"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="ACCOUNT" baseColumnNames="ACCOUNT_TYPE"
+                                 constraintName="FK_ACCOUNT_ACCOUNT_TYPE_CODE_TYPE_ITEM" referencedTableName="CODE_TYPE_ITEM"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>
