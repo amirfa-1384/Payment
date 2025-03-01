@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,10 +19,12 @@ import java.util.Date;
 public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
-    @Column(name = "CREATEDATE")
+    private Long id;
+    @Column(name = "CREATEDATE", updatable = false, nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreatedDate
     private Date createDate;
-    @Column(name = "MODIFYDATE")
+    @Column(name = "MODIFYDATE", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @LastModifiedDate
     private Date ModifyDate;
     @Column(name = "DELETEDATE")
     private Date DeleteDate;
@@ -30,8 +34,8 @@ public abstract class BaseEntity {
     private String ModifyUser;
     @Column(name = "DELETE_USER")
     private String deleteUser;
-    @Column(name = "VERSION")
-    private Integer version;
-    @Column(name = "DATASTATE")
-    private Integer dataState;
+    @Column(name = "VERSION", nullable = false, columnDefinition = "INT DEFAULT 0")
+    private Integer version = 0;
+    @Column(name = "DATASTATE", nullable = false, columnDefinition = "INT DEFAULT 0")
+    private Integer dataState = 0 ;
 }
