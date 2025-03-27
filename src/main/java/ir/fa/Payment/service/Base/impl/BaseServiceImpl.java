@@ -2,6 +2,7 @@ package ir.fa.Payment.service.Base.impl;
 
 import ir.fa.Payment.Repository.Base.BaseRepository;
 import ir.fa.Payment.entity.base.BaseEntity;
+import ir.fa.Payment.exception.NotFoundException;
 import ir.fa.Payment.mapper.Base.BaseMapper;
 import ir.fa.Payment.service.Base.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,10 @@ public abstract class BaseServiceImpl<T extends BaseEntity, D, MPR extends BaseM
             ex.printStackTrace();
         }
     }
+
     @Override
     public D save(D dto) {
-        T entity =translator.toEntity(dto);
+        T entity = translator.toEntity(dto);
         T created = repository.create(entity);
         return translator.toDto(created);
     }
@@ -50,19 +52,26 @@ public abstract class BaseServiceImpl<T extends BaseEntity, D, MPR extends BaseM
         return dto;
     }
 
- /*   @Override
+    @Override
     public List<D> findAll() {
-        List<T> entities = repository.getAll();
+        List<T> entities = repository.findAll();
         return translator.toDtoList(entities);
-    }*/
+    }
 
     @Override
-    public boolean deleteById(Long id) {
+    public boolean deleteById(Long id) throws Exception {
         try {
-            repository.deleteById(id);
+            T entity = repository.findById(id);
+            if (entity == null || entity.getId() == null) {
+                throw new NotFoundException("NotFound");
+            }
+            entity.setDataState(100);
+            repository.update(entity);
             return true;
-        }catch (Exception ex){
-            return false;
+
+
+        } catch (Exception ex) {
+            throw new Exception(ex.getMessage());
         }
     }
 
@@ -72,7 +81,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity, D, MPR extends BaseM
         try {
             repository.delete(entity);
             return true;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return false;
         }
     }

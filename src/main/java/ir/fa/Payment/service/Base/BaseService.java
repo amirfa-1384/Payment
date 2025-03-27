@@ -10,8 +10,8 @@ public interface BaseService<D> {
     D save(D dto);
     D findById(Long id);
 
-//    List<D> findAll();
-    boolean deleteById(Long id);
+    List<D> findAll();
+    boolean deleteById(Long id) throws Exception;
 
     boolean delete(D dto);
 //    boolean softDelete(D dto);
